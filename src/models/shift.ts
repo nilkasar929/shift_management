@@ -1,8 +1,9 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/config';
+import sequelize from '../postgres/pgConfig';
 import Employee from './employee';
 
 class Shift extends Model {
+  [x: string]: any;
   public id!: string;
   public employeeId!: string;
   public startTime!: Date;

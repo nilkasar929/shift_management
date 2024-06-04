@@ -1,7 +1,10 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import { Employee } from '../models';
+import  Employee  from '../models/employee';
 import { generateToken } from '../utils/jwt';
+
+
+//code for registration
 
 const register = async (req: Request, res: Response) => {
   const { name, email, password, assignedShiftHours, role } = req.body;
@@ -22,6 +25,9 @@ const register = async (req: Request, res: Response) => {
   }
 };
 
+
+
+//code for login of the employee
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
@@ -33,12 +39,12 @@ const login = async (req: Request, res: Response) => {
 
     const isMatch = await bcrypt.compare(password, employee.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Incorrect information' });
+      return res.status(400).json({ message: 'Incorrect username or password' });
     }
 
     const token = generateToken(employee);
-
-    res.status(200).json({ token });
+    
+    res.status(200).json({ 'message':"Log in succesful", 'token':token });
   }catch (error) {
     res.status(500).json({ message: 'Error while logging in', error });
   }

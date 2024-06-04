@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { Shift } from '../models';
+import  Shift  from '../models/shift';
 import { Workbook } from 'exceljs';
 
 const generateReport = async (req: Request, res: Response) => {

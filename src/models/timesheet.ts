@@ -1,5 +1,5 @@
 import { DataTypes, Model } from 'sequelize';
-import sequelize from '../config/config';
+import sequelize from '../postgres/pgConfig';
 import Employee from './employee';
 import Shift from './shift';
 

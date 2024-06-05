@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import Timesheet  from '../models/timesheet';
 
 const createTimesheet = async (req: Request, res: Response) => {
-  const { id: employeeId }:any = req.user;
+  const { id: employeeId } =( req as any).user;
   const { shiftId, projectName, taskName, fromDate, toDate } = req.body;
 
   try {

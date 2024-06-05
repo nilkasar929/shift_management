@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import  Shift  from '../models/shift';
 
 const startShift = async (req: Request, res: Response) => {
-  const { id: employeeId }:any = req.user;
+  const { id: employeeId } = (req as any).user;
 
   try {
     const shift = await Shift.create({
@@ -17,7 +17,7 @@ const startShift = async (req: Request, res: Response) => {
 };
 
 const endShift = async (req: Request, res: Response) => {
-  const { id: employeeId }:any = req.user;
+  const { id: employeeId } = (req as any).user ;
 
   try {
     const shift = await Shift.findOne({

@@ -1,16 +1,18 @@
 import {Sequelize} from 'sequelize'
+import dotenv from 'dotenv'
+import credentials from '../common/credentials';
 
 
-const sequelize =new Sequelize({
+dotenv.config();
 
-    username:"postgres",        
-    host:"localhost",           
-    port:5432,                  
-    password:"root",            
-    database:"postgres",        
-    dialect:"postgres"          
-})
-
+const sequelize = new Sequelize({
+  username: credentials.postgres.USERNAME,
+  password: credentials.postgres.PASSWORD,
+  database: credentials.postgres.DATABASE,
+  host: credentials.postgres.HOST,
+  port: credentials.postgres.DBPORT,
+  dialect: credentials.postgres.DIALECT as 'postgres'
+});
 
 sequelize.authenticate()
 .then(()=>{

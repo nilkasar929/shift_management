@@ -13,6 +13,6 @@ const generateToken = (user) => {
         email: user.email,
         role: user.role,
     };
-    return jsonwebtoken_1.default.sign(payload, process.env.SECRET_KEY, { expiresIn: '1h' });
+    return jsonwebtoken_1.default.sign(payload, process.env.SECRET_KEY || '', { expiresIn: '1h' });
 };
 exports.generateToken = generateToken;

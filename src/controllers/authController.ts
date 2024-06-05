@@ -19,7 +19,7 @@ const register = async (req: Request, res: Response) => {
       role,
     });
 
-    res.status(201).json({ message: 'Employee registered successfully' });
+    res.status(201).json({ message: 'Employee registered successfully', employee });
   } catch (error) {
     res.status(500).json({ message: 'Error registering employee', error });
   }
@@ -42,6 +42,7 @@ const login = async (req: Request, res: Response) => {
       return res.status(400).json({ message: 'Incorrect username or password' });
     }
 
+    
     const token = generateToken(employee);
     
     res.status(200).json({ 'message':"Log in succesful", 'token':token });

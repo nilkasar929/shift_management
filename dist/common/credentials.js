@@ -22,26 +22,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const dotenv = __importStar(require("dotenv"));
 dotenv.config();
-const authMiddleware = (req, res, next) => {
-    var _a;
-    const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
-    if (!token) {
-        return res.status(401).json({ message: 'Unauthorized' });
-    }
-    try {
-        const decoded = jsonwebtoken_1.default.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
-        next();
-    }
-    catch (error) {
-        return res.status(401).json({ message: 'Invalid token' });
+const credentials = {
+    postgres: {
+        USERNAME: process.env.DB_USER || "",
+        DATABASE: process.env.DB_DATABASE || "",
+        HOST: process.env.DB_HOST || "",
+        PASSWORD: process.env.DB_PASSWORD || "",
+        DBPORT: Number(process.env.DB_PORT) || 5432,
+        DIALECT: process.env.DB_DIALECT
     }
 };
-exports.default = authMiddleware;
+exports.default = credentials;

@@ -28,7 +28,7 @@ const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             assignedShiftHours,
             role,
         });
-        res.status(201).json({ message: 'Employee registered successfully' });
+        res.status(201).json({ message: 'Employee registered successfully', employee });
     }
     catch (error) {
         res.status(500).json({ message: 'Error registering employee', error });

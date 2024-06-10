@@ -25,7 +25,6 @@ const generateReport = async (req: Request, res: Response) => {
       });
     });
 
-    
     res.setHeader(
       'Content-Type',
       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'

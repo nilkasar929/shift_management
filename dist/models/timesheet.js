@@ -52,3 +52,4 @@ Timesheet.init({
     modelName: 'Timesheet',
 });
 exports.default = Timesheet;
+//# sourceMappingURL=timesheet.js.map

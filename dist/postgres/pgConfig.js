@@ -5,14 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const dotenv_1 = __importDefault(require("dotenv"));
+const credentials_1 = __importDefault(require("../common/credentials"));
 dotenv_1.default.config();
 const sequelize = new sequelize_1.Sequelize({
-    username: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
-    dialect: process.env.DB_DIALECT
+    username: credentials_1.default.postgres.USERNAME,
+    password: credentials_1.default.postgres.PASSWORD,
+    database: credentials_1.default.postgres.DATABASE,
+    host: credentials_1.default.postgres.HOST,
+    port: credentials_1.default.postgres.DBPORT,
+    dialect: credentials_1.default.postgres.DIALECT
 });
 sequelize.authenticate()
     .then(() => {
@@ -27,3 +28,4 @@ sequelize.sync()
     console.log("error in syncronizing the databse ", error);
 });
 exports.default = sequelize;
+//# sourceMappingURL=pgConfig.js.map

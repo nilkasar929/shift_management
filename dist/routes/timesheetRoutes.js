@@ -9,3 +9,4 @@ const authMiddleware_1 = __importDefault(require("../middlewares/authMiddleware"
 const router = (0, express_1.Router)();
 router.post('/', authMiddleware_1.default, timesheetController_1.createTimesheet);
 exports.default = router;
+//# sourceMappingURL=timesheetRoutes.js.map

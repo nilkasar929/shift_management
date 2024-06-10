@@ -21,19 +21,17 @@ const generateReport = (req, res) => __awaiter(void 0, void 0, void 0, function*
         const workbook = new exceljs_1.Workbook();
         const worksheet = workbook.addWorksheet('Report');
         worksheet.columns = [
-            { header: 'Employee ID', key: 'employeeId', width: 25 },
-            { header: 'Start Time', key: 'startTime', width: 25 },
-            { header: 'End Time', key: 'endTime', width: 25 },
-            { header: 'Actual Hours', key: 'actualHours', width: 25 },
-            { header: 'Assigned Shift Hours', key: 'assignedShiftHours', width: 25 },
+            { header: 'Employee ID', key: 'employeeId' },
+            { header: 'Start Time', key: 'startTime' },
+            { header: 'End Time', key: 'endTime' },
+            { header: 'Actual Hours', key: 'actualHours' },
         ];
         shifts.forEach((shift) => {
             worksheet.addRow({
                 employeeId: shift.employeeId,
                 startTime: shift.startTime,
                 endTime: shift.endTime,
-                actualHours: shift.actualHours,
-                assignedShiftHours: shift.assignedShiftHours,
+                actualHours: shift.actualHours
             });
         });
         res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
@@ -46,3 +44,4 @@ const generateReport = (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 });
 exports.generateReport = generateReport;
+//# sourceMappingURL=reportController.js.map

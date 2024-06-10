@@ -33,6 +33,10 @@ const credentials = {
         PASSWORD: process.env.DB_PASSWORD || "",
         DBPORT: Number(process.env.DB_PORT) || 5432,
         DIALECT: process.env.DB_DIALECT
+    },
+    secret_key: {
+        JWT_KEY: process.env.SECRET_KEY || ""
     }
 };
 exports.default = credentials;
+//# sourceMappingURL=credentials.js.map

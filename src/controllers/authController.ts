@@ -5,7 +5,6 @@ import  {generateToken}  from '../utils/jwt';
 
 
 //code for registration
-
 const register = async (req: Request, res: Response) => {
   const { name, email, password, assignedShiftHours, role } = req.body;
 
@@ -24,8 +23,6 @@ const register = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Error registering employee', error });
   }
 };
-
-
 
 //code for login of the employee
 const login = async (req: Request, res: Response) => {

@@ -35,3 +35,4 @@ Claim.init({
     modelName: 'Claim',
 });
 exports.default = Claim;
+//# sourceMappingURL=claims.js.map

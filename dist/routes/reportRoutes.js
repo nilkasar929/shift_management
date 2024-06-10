@@ -9,3 +9,4 @@ const authMiddleware_1 = __importDefault(require("../middlewares/authMiddleware"
 const router = (0, express_1.Router)();
 router.get('/report', authMiddleware_1.default, reportController_1.generateReport);
 exports.default = router;
+//# sourceMappingURL=reportRoutes.js.map

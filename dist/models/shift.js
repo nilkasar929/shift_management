@@ -39,3 +39,4 @@ Shift.init({
     modelName: 'Shift',
 });
 exports.default = Shift;
+//# sourceMappingURL=shift.js.map

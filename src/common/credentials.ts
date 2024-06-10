@@ -1,8 +1,6 @@
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-
-
 const credentials ={
    postgres:{
     USERNAME : process.env.DB_USER || "",

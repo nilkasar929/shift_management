@@ -7,13 +7,7 @@ const createTimesheet = async (req: Request, res: Response) => {
 
   try {
     const timesheet = await Timesheet.create({
-      employeeId,
-      shiftId,
-      projectName,
-      taskName,
-      fromDate,
-      toDate,
-    });
+      employeeId,shiftId, projectName, taskName,fromDate, toDate,});
 
     res.status(201).json({ message: 'Timesheet entry created', timesheet });
   } catch (error) {

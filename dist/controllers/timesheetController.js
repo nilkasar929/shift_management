@@ -19,12 +19,7 @@ const createTimesheet = (req, res) => __awaiter(void 0, void 0, void 0, function
     const { shiftId, projectName, taskName, fromDate, toDate } = req.body;
     try {
         const timesheet = yield timesheet_1.default.create({
-            employeeId,
-            shiftId,
-            projectName,
-            taskName,
-            fromDate,
-            toDate,
+            employeeId, shiftId, projectName, taskName, fromDate, toDate,
         });
         res.status(201).json({ message: 'Timesheet entry created', timesheet });
     }
@@ -33,3 +28,4 @@ const createTimesheet = (req, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.createTimesheet = createTimesheet;
+//# sourceMappingURL=timesheetController.js.map

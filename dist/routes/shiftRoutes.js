@@ -10,3 +10,4 @@ const router = (0, express_1.Router)();
 router.post('/start', authMiddleware_1.default, shiftController_1.startShift);
 router.post('/end', authMiddleware_1.default, shiftController_1.endShift);
 exports.default = router;
+//# sourceMappingURL=shiftRoutes.js.map

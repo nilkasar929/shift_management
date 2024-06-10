@@ -13,6 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
 
+
 app.use('/api/auth', authRoutes);
 app.use('/api/shift', shiftRoutes);
 app.use('/api/timesheet', timesheetRoutes);

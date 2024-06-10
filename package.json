@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/app.ts"
+    "build": "tsc",
+    "start": "node dist/app.js"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +17,7 @@
     "@types/pg": "^8.11.6",
     "@types/sequelize": "^4.28.20",
     "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.11.5",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.6",
+    "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "postgres": "^3.4.4",
     "sequelize": "^6.37.3",

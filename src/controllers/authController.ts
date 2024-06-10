@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import  Employee  from '../models/employee';
-import { generateToken } from '../utils/jwt';
+import  Employee from '../models/employee';
+import  {generateToken}  from '../utils/jwt';
 
 
 //code for registration
@@ -30,6 +30,7 @@ const register = async (req: Request, res: Response) => {
 //code for login of the employee
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
+
 
   try {
     const employee = await Employee.findOne({ where: { email } });

@@ -5,13 +5,16 @@ import credentials from '../common/credentials';
 
 dotenv.config();
 
-const sequelize = new Sequelize({
-  username: credentials.postgres.USERNAME,
-  password: credentials.postgres.PASSWORD,
-  database: credentials.postgres.DATABASE,
-  host: credentials.postgres.HOST,
-  port: credentials.postgres.DBPORT,
-  dialect: credentials.postgres.DIALECT as 'postgres'
+const sequelize = new Sequelize(process.env.DATABASE_URL!, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // This may be necessary depending on your Render configuration
+    },
+  },
+   // Adjust the path as needed
 });
 
 sequelize.authenticate()

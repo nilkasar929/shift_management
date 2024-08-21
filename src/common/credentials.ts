@@ -8,7 +8,8 @@ const credentials ={
     HOST  : process.env.DB_HOST || "",
     PASSWORD : process.env.DB_PASSWORD || "",
     DBPORT : Number(process.env.DB_PORT) || 5432,
-    DIALECT:process.env.DB_DIALECT
+    DIALECT:process.env.DB_DIALECT,
+    DBURL:process.env.DATABASE_URL 
    },
 
    secret_key:{

@@ -58,7 +58,10 @@ exports.login = login;
 const users = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const allUsers = yield employee_1.default.findAll();
-        return allUsers;
+        const user = yield allUsers.map((item) => {
+            return item.dataValues;
+        });
+        res.status(200).json(user);
     }
     catch (error) {
         throw error;

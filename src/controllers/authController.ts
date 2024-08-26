@@ -53,7 +53,12 @@ const users = async(req: Request, res: Response) =>{
   try {
     const allUsers = await Employee.findAll();
 
-    return allUsers;
+    
+    const user = await allUsers.map((item)=>{
+     return item.dataValues
+
+    })
+    res.status(200).json(user);
 
   } catch (error) {
     throw error;

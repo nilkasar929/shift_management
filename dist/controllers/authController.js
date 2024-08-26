@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.login = exports.register = void 0;
+exports.users = exports.login = exports.register = void 0;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const employee_1 = __importDefault(require("../models/employee"));
 const jwt_1 = require("../utils/jwt");
@@ -55,4 +55,14 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.login = login;
+const users = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const allUsers = employee_1.default.findAll();
+        return allUsers;
+    }
+    catch (error) {
+        throw error;
+    }
+});
+exports.users = users;
 //# sourceMappingURL=authController.js.map

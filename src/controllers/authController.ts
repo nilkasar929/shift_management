@@ -49,4 +49,15 @@ const login = async (req: Request, res: Response) => {
   }
 };
 
-export { register, login };
+const users = async(req: Request, res: Response) =>{
+  try {
+    const allUsers = Employee.findAll();
+
+    return allUsers;
+
+  } catch (error) {
+    throw error;
+  }
+}
+
+export { register, login,users };

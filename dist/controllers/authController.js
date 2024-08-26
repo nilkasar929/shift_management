@@ -57,7 +57,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.login = login;
 const users = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allUsers = employee_1.default.findAll();
+        const allUsers = yield employee_1.default.findAll();
         return allUsers;
     }
     catch (error) {

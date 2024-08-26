@@ -51,7 +51,7 @@ const login = async (req: Request, res: Response) => {
 
 const users = async(req: Request, res: Response) =>{
   try {
-    const allUsers = Employee.findAll();
+    const allUsers = await Employee.findAll();
 
     return allUsers;
 

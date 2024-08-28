@@ -10,6 +10,7 @@ const credentials_1 = __importDefault(require("../common/credentials"));
 dotenv_1.default.config();
 const generateToken = (user) => {
     const payload = {
+        name: user.name,
         id: user.id,
         email: user.email,
         role: user.role,

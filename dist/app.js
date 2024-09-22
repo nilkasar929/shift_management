@@ -20,7 +20,11 @@ app.use('/api/auth', authRoutes_1.default);
 app.use('/api/shift', shiftRoutes_1.default);
 app.use('/api/timesheet', timesheetRoutes_1.default);
 app.use('/api/report', reportRoutes_1.default);
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
 app.listen(process.env.PORT, () => {
     console.log("Server is running on port", process.env.PORT);
 });
+exports.default = app;
 //# sourceMappingURL=app.js.map

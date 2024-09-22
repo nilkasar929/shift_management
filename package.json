@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "node dist/app.js"
+    "start": "node dist/app.js",
+    "deploy": "serverless deploy"
   },
   "keywords": [],
   "author": "",
@@ -17,20 +18,26 @@
     "@types/node": "^20.12.13",
     "@types/pg": "^8.11.6",
     "@types/sequelize": "^4.28.20",
+    "aws": "^0.0.3-2",
+    "aws-cli": "^0.0.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "exceljs": "^4.4.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.11.5",
+    "serverless-http": "^3.2.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
     "@types/jsonwebtoken": "^9.0.6",
+    "aws-sdk": "^2.1687.0",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
     "postgres": "^3.4.4",
     "sequelize": "^6.37.3",
-    "sequelize-cli": "^6.6.2"
+    "sequelize-cli": "^6.6.2",
+    "serverless": "^3.39.0",
+    "serverless-webpack": "^5.14.1"
   }
 }

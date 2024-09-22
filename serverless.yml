@@ -1,0 +1,18 @@
+service: shiftManagement
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  memorySize: 1024
+  stage: dev
+  timeout: 15
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: any
+          cors: true # Enable CORS for API Gateway

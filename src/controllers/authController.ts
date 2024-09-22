@@ -19,8 +19,8 @@ const register = async (req: Request, res: Response) => {
     });
 
     res.status(201).json({ message: 'Employee registered successfully', employee });
-  } catch (error) {
-    res.status(500).json({ message: 'Error registering employee', error });
+  } catch (error:any) {
+    res.status(500).json({ message: 'Error registering employee', error});
   }
 };
 

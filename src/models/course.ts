@@ -9,6 +9,7 @@ class Course extends Model {
   public description!: string;
   public domain!:string;
   public author!:string;
+  public price!:string;
 
 }
 

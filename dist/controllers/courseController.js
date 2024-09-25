@@ -17,12 +17,13 @@ const course_1 = __importDefault(require("../models/course"));
 const favourites_1 = __importDefault(require("../models/favourites"));
 const cart_1 = __importDefault(require("../models/cart"));
 const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, domain, image, author, description } = req.body;
+    const { name, domain, price, image, author, description } = req.body;
     try {
         const course = yield course_1.default.create({
             name,
             domain,
             image,
+            price,
             author,
             description,
         });

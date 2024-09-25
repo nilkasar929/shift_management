@@ -14,40 +14,40 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.users = exports.login = exports.register = void 0;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
-const employee_1 = __importDefault(require("../models/employee"));
+const User_1 = __importDefault(require("../models/User"));
 const jwt_1 = require("../utils/jwt");
 //code for registration
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { name, email, password, assignedShiftHours, role } = req.body;
     try {
         const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
-        const employee = yield employee_1.default.create({
+        const User1 = yield User_1.default.create({
             name,
             email,
             password: hashedPassword,
             assignedShiftHours,
             role,
         });
-        res.status(201).json({ message: 'Employee registered successfully', employee });
+        res.status(201).json({ message: 'User registered successfully', User1 });
     }
     catch (error) {
-        res.status(500).json({ message: 'Error registering employee', error });
+        res.status(500).json({ message: 'Error registering User', error });
     }
 });
 exports.register = register;
-//code for login of the employee
+//code for login of the User
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     try {
-        const employee = yield employee_1.default.findOne({ where: { email } });
-        if (!employee) {
-            return res.status(404).json({ message: 'Employee not present' });
+        const User1 = yield User_1.default.findOne({ where: { email } });
+        if (!User1) {
+            return res.status(404).json({ message: 'User not present' });
         }
-        const isMatch = yield bcryptjs_1.default.compare(password, employee.password);
+        const isMatch = yield bcryptjs_1.default.compare(password, User1.password);
         if (!isMatch) {
             return res.status(400).json({ message: 'Incorrect username or password' });
         }
-        const token = (0, jwt_1.generateToken)(employee);
+        const token = (0, jwt_1.generateToken)(User1);
         res.status(200).json({ 'message': "Log in succesful", 'token': token });
     }
     catch (error) {
@@ -57,11 +57,11 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.login = login;
 const users = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const allUsers = yield employee_1.default.findAll();
-        const user = yield allUsers.map((item) => {
+        const allUsers = yield User_1.default.findAll();
+        const user1 = yield allUsers.map((item) => {
             return item.dataValues;
         });
-        res.status(200).json(user);
+        res.status(200).json(user1);
     }
     catch (error) {
         throw error;

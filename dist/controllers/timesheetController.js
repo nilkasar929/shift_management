@@ -15,11 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTimesheet = void 0;
 const timesheet_1 = __importDefault(require("../models/timesheet"));
 const createTimesheet = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id: employeeId } = req.user;
+    const { id: UserId } = req.user;
     const { shiftId, projectName, taskName, fromDate, toDate } = req.body;
     try {
         const timesheet = yield timesheet_1.default.create({
-            employeeId, shiftId, projectName, taskName, fromDate, toDate,
+            UserId, shiftId, projectName, taskName, fromDate, toDate,
         });
         res.status(201).json({ message: 'Timesheet entry created', timesheet });
     }

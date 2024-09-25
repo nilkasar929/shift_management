@@ -21,14 +21,14 @@ const generateReport = (req, res) => __awaiter(void 0, void 0, void 0, function*
         const workbook = new exceljs_1.Workbook();
         const worksheet = workbook.addWorksheet('Report');
         worksheet.columns = [
-            { header: 'Employee ID', key: 'employeeId' },
+            { header: 'User ID', key: 'UserId' },
             { header: 'Start Time', key: 'startTime' },
             { header: 'End Time', key: 'endTime' },
             { header: 'Actual Hours', key: 'actualHours' },
         ];
         shifts.forEach((shift) => {
             worksheet.addRow({
-                employeeId: shift.employeeId,
+                UserId: shift.UserId,
                 startTime: shift.startTime,
                 endTime: shift.endTime,
                 actualHours: shift.actualHours

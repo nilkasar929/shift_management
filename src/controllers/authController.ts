@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import bcrypt from 'bcryptjs';
-import  Employee from '../models/employee';
+import  User from '../models/User';
 import  {generateToken}  from '../utils/jwt';
 
 
@@ -10,7 +10,7 @@ const register = async (req: Request, res: Response) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
-    const employee = await Employee.create({
+    const User1 = await User.create({
       name,
       email,
       password: hashedPassword,
@@ -18,30 +18,30 @@ const register = async (req: Request, res: Response) => {
       role,
     });
 
-    res.status(201).json({ message: 'Employee registered successfully', employee });
+    res.status(201).json({ message: 'User registered successfully', User1 });
   } catch (error:any) {
-    res.status(500).json({ message: 'Error registering employee', error});
+    res.status(500).json({ message: 'Error registering User', error});
   }
 };
 
-//code for login of the employee
+//code for login of the User
 const login = async (req: Request, res: Response) => {
   const { email, password } = req.body;
 
 
   try {
-    const employee = await Employee.findOne({ where: { email } });
-    if (!employee) {
-      return res.status(404).json({ message: 'Employee not present' });
+    const User1 = await User.findOne({ where: { email } });
+    if (!User1) {
+      return res.status(404).json({ message: 'User not present' });
     }
 
-    const isMatch = await bcrypt.compare(password, employee.password);
+    const isMatch = await bcrypt.compare(password, User1.password);
     if (!isMatch) {
       return res.status(400).json({ message: 'Incorrect username or password' });
     }
 
     
-    const token = generateToken(employee);
+    const token = generateToken(User1);
     
     res.status(200).json({ 'message':"Log in succesful", 'token':token });
   }catch (error) {
@@ -51,14 +51,14 @@ const login = async (req: Request, res: Response) => {
 
 const users = async(req: Request, res: Response) =>{
   try {
-    const allUsers = await Employee.findAll();
+    const allUsers = await User.findAll();
 
     
-    const user = await allUsers.map((item)=>{
+    const user1 = await allUsers.map((item)=>{
      return item.dataValues
 
     })
-    res.status(200).json(user);
+    res.status(200).json(user1);
 
   } catch (error) {
     throw error;

@@ -1,7 +1,7 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../postgres/pgConfig';
 
-class Employee extends Model {
+class User extends Model {
   public id!: string;
   public name!: string;
   public email!: string;
@@ -10,7 +10,7 @@ class Employee extends Model {
   public role!: string;
 }
 
-Employee.init(
+User.init(
   {
     id: {
       type: DataTypes.UUID,
@@ -35,14 +35,14 @@ Employee.init(
       allowNull: false,
     },
     role: {
-      type: DataTypes.ENUM('SuperAdmin', 'Manager', 'Employee'),
-      defaultValue: 'Employee',
+      type: DataTypes.ENUM('admin', 'user', 'teacher'),
+      defaultValue: 'user',
     },
   },
   {
     sequelize,
-    modelName: 'Employee',
+    modelName: 'User',
   }
 );
 
-export default Employee;
+export default User;

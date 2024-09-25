@@ -6,16 +6,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const pgConfig_1 = __importDefault(require("../postgres/pgConfig"));
 const User_1 = __importDefault(require("./User"));
-const shift_1 = __importDefault(require("./shift"));
-class Timesheet extends sequelize_1.Model {
+const course_1 = __importDefault(require("./course"));
+class Cart extends sequelize_1.Model {
 }
-Timesheet.init({
+Cart.init({
     id: {
         type: sequelize_1.DataTypes.UUID,
         defaultValue: sequelize_1.DataTypes.UUIDV4,
         primaryKey: true,
     },
-    UserId: {
+    courseId: {
+        type: sequelize_1.DataTypes.UUID,
+        references: {
+            model: course_1.default,
+            key: 'id'
+        }
+    },
+    userId: {
         type: sequelize_1.DataTypes.UUID,
         references: {
             model: User_1.default,
@@ -23,33 +30,9 @@ Timesheet.init({
         },
         allowNull: false,
     },
-    shiftId: {
-        type: sequelize_1.DataTypes.UUID,
-        references: {
-            model: shift_1.default,
-            key: 'id',
-        },
-        allowNull: false,
-    },
-    projectName: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
-    },
-    taskName: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
-    },
-    fromDate: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: false,
-    },
-    toDate: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: false,
-    },
 }, {
     sequelize: pgConfig_1.default,
-    modelName: 'Timesheet',
+    modelName: 'cart',
 });
-exports.default = Timesheet;
-//# sourceMappingURL=timesheet.js.map
+exports.default = Cart;
+//# sourceMappingURL=cart.js.map

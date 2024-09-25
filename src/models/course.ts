@@ -36,10 +36,13 @@ Course.init(
         type:DataTypes.STRING,
         allowNull:true
     },
+    price:{
+      type:DataTypes.NUMBER,
+      allowNull:true
+    },
     domain: {
       type: DataTypes.ENUM('Web Development','Data Science','Cyber Security', 'Frontend', 'backend'),
       allowNull: false,
-
     },
     
   },

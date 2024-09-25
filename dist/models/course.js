@@ -29,6 +29,10 @@ Course.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: true
     },
+    price: {
+        type: sequelize_1.DataTypes.NUMBER,
+        allowNull: true
+    },
     domain: {
         type: sequelize_1.DataTypes.ENUM('Web Development', 'Data Science', 'Cyber Security', 'Frontend', 'backend'),
         allowNull: false,

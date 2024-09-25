@@ -15,10 +15,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.endShift = exports.startShift = void 0;
 const shift_1 = __importDefault(require("../models/shift"));
 const startShift = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id: employeeId } = req.user;
+    const { id: UserId } = req.user;
     try {
         const shift = yield shift_1.default.create({
-            employeeId,
+            UserId,
             startTime: new Date(),
         });
         res.status(201).json({ message: 'Shift started', shift });
@@ -29,10 +29,10 @@ const startShift = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.startShift = startShift;
 const endShift = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { id: employeeId } = req.user;
+    const { id: UserId } = req.user;
     try {
         const shift = yield shift_1.default.findOne({
-            where: { employeeId, endTime: null },
+            where: { UserId, endTime: null },
         });
         if (!shift) {
             return res.status(404).json({ message: 'Shift not found' });

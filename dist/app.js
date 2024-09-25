@@ -5,9 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
-const shiftRoutes_1 = __importDefault(require("./routes/shiftRoutes"));
-const timesheetRoutes_1 = __importDefault(require("./routes/timesheetRoutes"));
-const reportRoutes_1 = __importDefault(require("./routes/reportRoutes"));
+const courseRoutes_1 = __importDefault(require("./routes/courseRoutes"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const cors_1 = __importDefault(require("cors"));
@@ -17,9 +15,7 @@ app.use(body_parser_1.default.json());
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use('/api/auth', authRoutes_1.default);
-app.use('/api/shift', shiftRoutes_1.default);
-app.use('/api/timesheet', timesheetRoutes_1.default);
-app.use('/api/report', reportRoutes_1.default);
+app.use('./api/courses', courseRoutes_1.default);
 app.get('/', (req, res) => {
     res.send('Hello World');
 });

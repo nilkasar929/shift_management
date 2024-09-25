@@ -1,30 +1,29 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '../postgres/pgConfig';
 import User from './User';
+import Course from './course';
 
-class Claim extends Model {
+class Cart extends Model {
   public id!: string;
-  public key!: string;
-  public value!: string;
-  public UserId!: string;
+  public userId!: string;
+  public courseId!:string;
 }
 
-Claim.init(
+Cart.init(
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       primaryKey: true,
     },
-    key: {
-      type: DataTypes.STRING,
-      allowNull: false,
+    courseId:{
+        type: DataTypes.UUID,
+        references:{
+            model:Course,
+            key:'id'
+        }
     },
-    value: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    UserId: {
+    userId: {
       type: DataTypes.UUID,
       references: {
         model: User,
@@ -35,8 +34,8 @@ Claim.init(
   },
   {
     sequelize,
-    modelName: 'Claim',
+    modelName: 'cart',
   }
 );
 
-export default Claim;
+export default Cart;

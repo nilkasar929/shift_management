@@ -5,9 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const pgConfig_1 = __importDefault(require("../postgres/pgConfig"));
-class User extends sequelize_1.Model {
+class Course extends sequelize_1.Model {
 }
-User.init({
+Course.init({
     id: {
         type: sequelize_1.DataTypes.UUID,
         defaultValue: sequelize_1.DataTypes.UUIDV4,
@@ -17,26 +17,25 @@ User.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    email: {
+    author: {
         type: sequelize_1.DataTypes.STRING,
-        unique: true,
-        allowNull: false,
+        allowNull: true
     },
-    password: {
+    image: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
+        allowNull: true
     },
-    assignedShiftHours: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
+    description: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: true
     },
-    role: {
-        type: sequelize_1.DataTypes.ENUM('admin', 'user', 'teacher'),
-        defaultValue: 'user',
+    domain: {
+        type: sequelize_1.DataTypes.ENUM('Web Development', 'Data Science', 'Cyber Security', 'Frontend', 'backend'),
+        allowNull: false,
     },
 }, {
     sequelize: pgConfig_1.default,
-    modelName: 'User',
+    modelName: 'course',
 });
-exports.default = User;
-//# sourceMappingURL=employee.js.map
+exports.default = Course;
+//# sourceMappingURL=course.js.map

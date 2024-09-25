@@ -9,7 +9,6 @@ class Course extends Model {
   public description!: string;
   public domain!:string;
   public author!:string;
-  public price!:string;
 
 }
 
@@ -36,10 +35,6 @@ Course.init(
     description:{
         type:DataTypes.STRING,
         allowNull:true
-    },
-    price:{
-      type:DataTypes.NUMBER,
-      allowNull:true
     },
     domain: {
       type: DataTypes.ENUM('Web Development','Data Science','Cyber Security', 'Frontend', 'backend'),

@@ -4,14 +4,13 @@ import Favourites from "../models/favourites";
 import Cart from "../models/cart";
 
 const createCourse=async(req:Request,res:Response)=>{
-    const {name,domain,price,image,author,description} = req.body;
+    const {name,domain,image,author,description} = req.body;
 
    try {
     const course = await Course.create({
         name,
         domain,
         image,
-        price,
         author,
         description,
       });

@@ -15,7 +15,7 @@ app.use(body_parser_1.default.json());
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.use('/api/auth', authRoutes_1.default);
-app.use('./api/courses', courseRoutes_1.default);
+app.use('/api/courses', courseRoutes_1.default);
 app.get('/', (req, res) => {
     res.send('Hello World');
 });

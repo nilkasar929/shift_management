@@ -15,7 +15,7 @@ const createCourse=async(req:Request,res:Response)=>{
         description,
       });
 
-      return course;
+      return res.status(201).json(course.dataValues);
    } catch (error) {
     throw error;
    }
@@ -31,7 +31,7 @@ const deleteCourse=async(req:Request,res:Response)=>{
 const getCourses = async(req:Request,res:Response)=>{
     try {
         const courses = Course.findAll();
-        return courses;
+        return res.status(201).json(courses);
     } catch (error) {
         throw error
     }
@@ -45,6 +45,7 @@ const addToFavourites=async(req:Request,res:Response)=>{
         courseId,
         userId
     })
+    return res.status(201).json(fav)
    } catch (error) {
     throw error;
    }

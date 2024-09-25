@@ -26,7 +26,7 @@ const createCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
             author,
             description,
         });
-        return course;
+        return res.status(201).json(course.dataValues);
     }
     catch (error) {
         throw error;
@@ -42,7 +42,7 @@ exports.deleteCourse = deleteCourse;
 const getCourses = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const courses = course_1.default.findAll();
-        return courses;
+        return res.status(201).json(courses);
     }
     catch (error) {
         throw error;
@@ -57,6 +57,7 @@ const addToFavourites = (req, res) => __awaiter(void 0, void 0, void 0, function
             courseId,
             userId
         });
+        return res.status(201).json(fav);
     }
     catch (error) {
         throw error;

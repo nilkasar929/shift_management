@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addToCart = exports.removeCart = exports.deleteCourse = exports.addToFavourites = exports.removeFav = exports.getCourses = exports.createCourse = void 0;
+exports.fetchFav = exports.fetchCart = exports.addToCart = exports.removeCart = exports.deleteCourse = exports.addToFavourites = exports.removeFav = exports.getCourses = exports.createCourse = void 0;
 const course_1 = __importDefault(require("../models/course"));
 const favourites_1 = __importDefault(require("../models/favourites"));
 const cart_1 = __importDefault(require("../models/cart"));
@@ -36,7 +36,7 @@ exports.createCourse = createCourse;
 const deleteCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const id = req.body;
     const remove = yield course_1.default.destroy({ where: { id: id } });
-    return remove;
+    return res.status(201).json(remove);
 });
 exports.deleteCourse = deleteCourse;
 const getCourses = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -64,6 +64,28 @@ const addToFavourites = (req, res) => __awaiter(void 0, void 0, void 0, function
     }
 });
 exports.addToFavourites = addToFavourites;
+const fetchFav = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.params;
+    try {
+        const courses = yield favourites_1.default.findAll({ where: { userId } });
+        return res.status(201).json(courses);
+    }
+    catch (error) {
+        throw error;
+    }
+});
+exports.fetchFav = fetchFav;
+const fetchCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const userId = req.params;
+    try {
+        const courses = yield cart_1.default.findAll({ where: { userId } });
+        return res.status(201).json(courses);
+    }
+    catch (error) {
+        throw error;
+    }
+});
+exports.fetchCart = fetchCart;
 const addToCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { courseId } = req.body;
     const { userId } = req.body;
@@ -72,7 +94,7 @@ const addToCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             courseId,
             userId
         });
-        return fav;
+        return res.status(201).json(fav);
     }
     catch (error) {
         throw error;
@@ -96,7 +118,7 @@ const removeFav = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const userId = req.body;
     try {
         const remove = yield favourites_1.default.destroy({ where: { courseId: courseId, userId: userId } });
-        return remove;
+        return res.status(201).json(remove);
     }
     catch (error) {
         throw error;

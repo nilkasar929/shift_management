@@ -25,7 +25,7 @@ const deleteCourse=async(req:Request,res:Response)=>{
     const id = req.body;
 
     const remove = await Course.destroy({ where: { id: id} });
-    return remove;
+    return res.status(201).json(remove);
 }
 
 const getCourses = async(req:Request,res:Response)=>{
@@ -50,6 +50,25 @@ const addToFavourites=async(req:Request,res:Response)=>{
     throw error;
    }
 }
+
+const fetchFav = async(req:Request,res:Response)=>{
+    const userId = req.params;
+    try {
+        const courses = await Favourites.findAll({where:{userId}})
+    return res.status(201).json(courses);
+    } catch (error) {
+        throw error;
+    }
+}
+const fetchCart = async(req:Request,res:Response)=>{
+    const userId = req.params;
+    try {
+        const courses = await Cart.findAll({where:{userId}})
+    return res.status(201).json(courses);
+    } catch (error) {
+        throw error;
+    }
+}
 const addToCart=async(req:Request,res:Response)=>{
     const {courseId}=req.body;
     const {userId}=req.body;
@@ -59,7 +78,7 @@ const addToCart=async(req:Request,res:Response)=>{
         courseId,
         userId
     })
-    return fav;
+    return res.status(201).json(fav);
    } catch (error) {
     throw error;
    }
@@ -80,11 +99,11 @@ const removeFav=async(req:Request,res:Response)=>{
     const userId = req.body;
     try {
         const remove = await Favourites.destroy({ where: { courseId: courseId,userId:userId} });
-    return remove;
+        return res.status(201).json(remove);
     } catch (error) {
         throw error;
     }
 }
 
 
-export {createCourse,getCourses,removeFav,addToFavourites,deleteCourse,removeCart,addToCart}
+export {createCourse,getCourses,removeFav,addToFavourites,deleteCourse,removeCart,addToCart,fetchCart,fetchFav}

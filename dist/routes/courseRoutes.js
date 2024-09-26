@@ -10,5 +10,7 @@ router.post('/addToCart', courseController_1.addToCart);
 router.post('/addToFavourites', courseController_1.addToFavourites);
 router.post('/removeFav', courseController_1.removeFav);
 router.post('/removeCart', courseController_1.removeCart);
+router.post('/fetchFav', courseController_1.fetchFav);
+router.post('/fetchCart', courseController_1.fetchCart);
 exports.default = router;
 //# sourceMappingURL=courseRoutes.js.map

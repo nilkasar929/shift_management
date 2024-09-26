@@ -41,7 +41,7 @@ const deleteCourse = (req, res) => __awaiter(void 0, void 0, void 0, function* (
 exports.deleteCourse = deleteCourse;
 const getCourses = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const courses = course_1.default.findAll();
+        const courses = yield course_1.default.findAll();
         return res.status(201).json(courses);
     }
     catch (error) {
@@ -53,7 +53,7 @@ const addToFavourites = (req, res) => __awaiter(void 0, void 0, void 0, function
     const { courseId } = req.body;
     const { userId } = req.body;
     try {
-        const fav = favourites_1.default.create({
+        const fav = yield favourites_1.default.create({
             courseId,
             userId
         });
@@ -68,7 +68,7 @@ const addToCart = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { courseId } = req.body;
     const { userId } = req.body;
     try {
-        const fav = cart_1.default.create({
+        const fav = yield cart_1.default.create({
             courseId,
             userId
         });

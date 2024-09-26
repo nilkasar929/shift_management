@@ -30,7 +30,7 @@ const deleteCourse=async(req:Request,res:Response)=>{
 
 const getCourses = async(req:Request,res:Response)=>{
     try {
-        const courses = Course.findAll();
+        const courses = await Course.findAll();
         return res.status(201).json(courses);
     } catch (error) {
         throw error
@@ -41,7 +41,7 @@ const addToFavourites=async(req:Request,res:Response)=>{
     const {userId}=req.body;
 
    try {
-    const fav = Favourites.create({
+    const fav = await Favourites.create({
         courseId,
         userId
     })
@@ -55,7 +55,7 @@ const addToCart=async(req:Request,res:Response)=>{
     const {userId}=req.body;
 
    try {
-    const fav = Cart.create({
+    const fav = await Cart.create({
         courseId,
         userId
     })

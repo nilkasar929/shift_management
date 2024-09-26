@@ -6,7 +6,6 @@ class User extends Model {
   public name!: string;
   public email!: string;
   public password!: string;
-  public assignedShiftHours!: number;
   public role!: string;
 }
 
@@ -30,10 +29,7 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    assignedShiftHours: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+   
     role: {
       type: DataTypes.ENUM('admin', 'user', 'teacher'),
       defaultValue: 'user',

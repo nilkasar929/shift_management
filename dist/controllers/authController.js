@@ -18,14 +18,13 @@ const User_1 = __importDefault(require("../models/User"));
 const jwt_1 = require("../utils/jwt");
 //code for registration
 const register = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { name, email, password, assignedShiftHours, role } = req.body;
+    const { name, email, password, role } = req.body;
     try {
         const hashedPassword = yield bcryptjs_1.default.hash(password, 10);
         const User1 = yield User_1.default.create({
             name,
             email,
             password: hashedPassword,
-            assignedShiftHours,
             role,
         });
         res.status(201).json({ message: 'User registered successfully', User1 });

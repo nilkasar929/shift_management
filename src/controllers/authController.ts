@@ -6,7 +6,7 @@ import  {generateToken}  from '../utils/jwt';
 
 //code for registration
 const register = async (req: Request, res: Response) => {
-  const { name, email, password, assignedShiftHours, role } = req.body;
+  const { name, email, password, role } = req.body;
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -14,7 +14,6 @@ const register = async (req: Request, res: Response) => {
       name,
       email,
       password: hashedPassword,
-      assignedShiftHours,
       role,
     });
 

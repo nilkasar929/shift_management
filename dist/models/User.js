@@ -26,10 +26,6 @@ User.init({
         type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
-    assignedShiftHours: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-    },
     role: {
         type: sequelize_1.DataTypes.ENUM('admin', 'user', 'teacher'),
         defaultValue: 'user',
